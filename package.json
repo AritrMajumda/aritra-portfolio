@@ -1,0 +1,46 @@
+{
+  "name": "aritra-portfolio",
+  "version": "1.0.0",
+  "description": "Modern portfolio website for Aritra Majumdar",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx",
+    "format": "prettier --write .",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "lighthouse": "lighthouse https://localhost:5173 --view"
+  },
+  "keywords": [
+    "portfolio",
+    "data-science",
+    "finance",
+    "generative-ai",
+    "blockchain"
+  ],
+  "author": "Aritra Majumdar",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.0.1",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^4.0.379",
+    "postcss": "^8.4.31",
+    "postcss-preset-env": "^9.1.1",
+    "prettier": "^3.0.3",
+    "terser": "^5.46.2",
+    "vite": "^5.0.0",
+    "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "gsap": "^3.12.2",
+    "lottie-web": "^5.12.2",
+    "website-scraper": "^6.0.0"
+  }
+}

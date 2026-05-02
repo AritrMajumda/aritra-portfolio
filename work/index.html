@@ -1,0 +1,1655 @@
+<!DOCTYPE html><!-- This site was created in Webflow. https://webflow.com --><!-- Last Published: Tue Mar 31 2026 09:38:32 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="ksenialitvinenko.space" data-wf-page="695e349fa39ebc5afa3babe0" data-wf-site="6932a842d7dfba9f9b27d9d6" lang="en"><head><meta charset="utf-8"><link href="https://cdn.prod.website-files.com" rel="preconnect"><title>Aritra Majumdar — Data Science &amp; AI Developer</title><meta content="Portfolio of Aritra Majumdar — Data Science, Quantitative Finance, and Generative AI developer. Building intelligent systems and autonomous agents." name="description"><meta content="Aritra Majumdar — Data Science &amp; AI Developer" property="og:title"><meta content="Portfolio of Aritra Majumdar — Data Science, Quantitative Finance, and Generative AI developer. Building intelligent systems and autonomous agents." property="og:description"><meta content="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/6976652ea430a098d76277be_%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0.png" property="og:image"><meta content="Aritra Majumdar — Data Science &amp; AI Developer" property="twitter:title"><meta content="Portfolio of Aritra Majumdar — Data Science, Quantitative Finance, and Generative AI developer. Building intelligent systems and autonomous agents." property="twitter:description"><meta property="og:type" content="website"><meta content="summary_large_image" name="twitter:card"><meta content="width=device-width, initial-scale=1" name="viewport"><meta content="Webflow" name="generator"><link href="/css/ksenias-fantastic-site-7f0d91.webflow.shared.2b65f49eb.css" rel="stylesheet" type="text/css"><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/697663aecc229c16c92a2349_%D0%A4%D0%B0%D0%B2%D0%B8%D0%BA%D0%BE%D0%BD.svg" rel="shortcut icon" type="image/x-icon"><link href="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/697663bfe6131f0effe6f4f2_%D0%A4%D0%B0%D0%B2%D0%B8%D0%BA%D0%BE%D0%BDbig.svg" rel="apple-touch-icon"><meta name="google-site-verification" content="hM8myK--PXrajt2s7JiR-jiydBwjgORdbYmlVLtha88">
+
+
+
+<script>
+(function () {
+  document.addEventListener('DOMContentLoaded', () => {
+
+    /* =========================
+      POPUPS (hash based)
+    ========================= */
+    const POPUPS = [
+      'modal-profesor',
+      'modal-govt-hospital',
+      'modal-frozen-earth',
+      'modal-giproteatr',
+      'modal-extractivism',
+      'modal-lectured-moving',
+      'modal-lectured-architecture',
+      'modal-non-dapibus'
+    ];
+
+    const OPEN_CLASS = 'is-open';
+    const BODY_LOCK_CLASS = 'no-scroll';
+
+    const getPopupEl = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      if (!el.classList.contains('popup__wrapper')) return null;
+      return el;
+    };
+
+    function closeAllPopups() {
+      document
+        .querySelectorAll(`.popup__wrapper.${OPEN_CLASS}`)
+        .forEach(p => p.classList.remove(OPEN_CLASS));
+      document.body.classList.remove(BODY_LOCK_CLASS);
+    }
+
+    function openPopupById(id) {
+      if (!POPUPS.includes(id)) return;
+
+      const popup = getPopupEl(id);
+      if (!popup) return;
+
+      closeAllPopups();
+      popup.classList.add(OPEN_CLASS);
+      document.body.classList.add(BODY_LOCK_CLASS);
+    }
+
+    function openPopupByHash() {
+      const id = (window.location.hash || '').replace('#', '');
+      if (!id) return;
+      openPopupById(id);
+    }
+
+    // initial open
+    openPopupByHash();
+
+    // react to hash changes
+    window.addEventListener('hashchange', openPopupByHash);
+
+    // react to pushState/replaceState changes
+    const fireLocationChange = () => window.dispatchEvent(new Event('locationchange'));
+
+    const _pushState = history.pushState;
+    history.pushState = function () {
+      const ret = _pushState.apply(this, arguments);
+      fireLocationChange();
+      return ret;
+    };
+
+    const _replaceState = history.replaceState;
+    history.replaceState = function () {
+      const ret = _replaceState.apply(this, arguments);
+      fireLocationChange();
+      return ret;
+    };
+
+    window.addEventListener('locationchange', openPopupByHash);
+
+    // if click on anchor like #modal-..., open popup
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const id = (link.getAttribute('href') || '').replace('#', '');
+      if (!POPUPS.includes(id)) return;
+
+      setTimeout(() => openPopupById(id), 0);
+    });
+
+    // close by button
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.popup-close') || e.target.closest('[data-popup-close]')) {
+        closeAllPopups();
+        history.pushState('', document.title, window.location.pathname + window.location.search);
+      }
+    });
+
+    // close by overlay click
+    document.addEventListener('click', (e) => {
+      const openedWrapper = e.target.closest(`.popup__wrapper.${OPEN_CLASS}`);
+      if (!openedWrapper) return;
+
+      if (e.target === openedWrapper) {
+        closeAllPopups();
+        history.pushState('', document.title, window.location.pathname + window.location.search);
+      }
+    });
+
+    // close by ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeAllPopups();
+        history.pushState('', document.title, window.location.pathname + window.location.search);
+      }
+    });
+
+    /* =========================
+      PAGE NAV ACTIVE STATE
+    ========================= */
+    const NAV_SELECTOR = '.page-nav__anchor-wrp';
+    const ACTIVE_CLASS = 'is-active-anchor';
+    const TOP_ID = 'top';
+
+    function normalizeIdFromHref(href) {
+      if (!href) return '';
+      const i = href.indexOf('#');
+      if (i === -1) return '';
+      return decodeURIComponent(href.slice(i + 1)).trim();
+    }
+
+    function initAnchorsNav() {
+      const nav = document.querySelector(NAV_SELECTOR);
+      if (!nav) return false;
+
+      const links = Array.from(nav.querySelectorAll('a[href*="#"]'));
+      if (!links.length) return true;
+
+      const items = links
+        .map((a) => {
+          const id = normalizeIdFromHref(a.getAttribute('href'));
+          if (!id) return null;
+          return { id, a };
+        })
+        .filter(Boolean);
+
+      if (!items.length) return true;
+
+      let sections = items.map(({ id }) => document.getElementById(id));
+      let tops = [];
+
+      function computeTops() {
+        sections = items.map(({ id }) => document.getElementById(id));
+        tops = sections.map((el) => (el ? (el.getBoundingClientRect().top + window.pageYOffset) : null));
+      }
+
+      function setActiveById(id) {
+        items.forEach(({ id: itemId, a }) => {
+          if (itemId === id) a.classList.add(ACTIVE_CLASS);
+          else a.classList.remove(ACTIVE_CLASS);
+        });
+      }
+
+      function getActiveId() {
+        const y = window.pageYOffset || 0;
+
+        if (y <= 4) return items.find(x => x.id === TOP_ID)?.id || items[0].id;
+
+        const offset = Math.max(80, Math.round(window.innerHeight * 0.15));
+        const probe = y + offset;
+
+        let activeIndex = 0;
+
+        for (let i = 0; i < items.length; i++) {
+          const id = items[i].id;
+          if (id === TOP_ID) continue;
+
+          const t = tops[i];
+          if (typeof t !== 'number') continue;
+
+          if (probe >= t) activeIndex = i;
+        }
+
+        return items[activeIndex].id;
+      }
+
+      let raf = 0;
+      function onScroll() {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          setActiveById(getActiveId());
+        });
+      }
+
+      computeTops();
+      setActiveById(getActiveId());
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        computeTops();
+        setActiveById(getActiveId());
+      });
+
+      window.addEventListener('load', () => {
+        computeTops();
+        setActiveById(getActiveId());
+      });
+
+      setTimeout(() => {
+        computeTops();
+        setActiveById(getActiveId());
+      }, 600);
+
+      return true;
+    }
+
+    function bootAnchorsNav() {
+      if (initAnchorsNav()) return;
+      let tries = 0;
+      const t = setInterval(() => {
+        tries += 1;
+        if (initAnchorsNav() || tries > 20) clearInterval(t);
+      }, 300);
+    }
+
+    bootAnchorsNav();
+
+    /* =========================
+      NAV GRADIENT BLUR STACK
+    ========================= */
+    const TARGET_SELECTOR = '.nav__gradient';
+    const STACK_CLASS = 'blur-stack';
+
+    const LAYERS = [
+      { z: 1, blur: 0.08, m1: '0%',    m2: '12.5%', m3: '25%',   m4: '37.5%' },
+      { z: 2, blur: 0.16, m1: '12.5%', m2: '25%',   m3: '37.5%', m4: '50%'   },
+      { z: 3, blur: 0.31, m1: '25%',   m2: '37.5%', m3: '50%',   m4: '62.5%' },
+      { z: 4, blur: 0.63, m1: '37.5%', m2: '50%',   m3: '62.5%', m4: '75%'   },
+      { z: 5, blur: 1.25, m1: '50%',   m2: '62.5%', m3: '75%',   m4: '87.5%' },
+      { z: 6, blur: 2.5,  m1: '62.5%', m2: '75%',   m3: '87.5%', m4: '100%'  },
+      { z: 7, blur: 5,    m1: '75%',   m2: '87.5%', m3: '100%',  m4: '100%'  },
+      { z: 8, blur: 10,   m1: '87.5%', m2: '100%',  m3: '100%',  m4: '100%'  }
+    ];
+
+    function buildStack(target) {
+      if (!target || target.querySelector(`.${STACK_CLASS}`)) return;
+
+      const stack = document.createElement('div');
+      stack.className = STACK_CLASS;
+
+      LAYERS.forEach(cfg => {
+        const layer = document.createElement('div');
+        layer.className = 'blur-stack__layer';
+        layer.style.zIndex = String(cfg.z);
+        layer.style.setProperty('--blur', `${cfg.blur}px`);
+        layer.style.setProperty('--m1', cfg.m1);
+        layer.style.setProperty('--m2', cfg.m2);
+        layer.style.setProperty('--m3', cfg.m3);
+        layer.style.setProperty('--m4', cfg.m4);
+        stack.appendChild(layer);
+      });
+
+      target.appendChild(stack);
+    }
+
+    function initBlurStacks() {
+      document.querySelectorAll(TARGET_SELECTOR).forEach(buildStack);
+    }
+
+    initBlurStacks();
+
+    const mo = new MutationObserver(() => initBlurStacks());
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+
+  });
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<style>
+  body.preloader-active { overflow: hidden; }
+
+  /* скрываем курсор на время прелоадера */
+  body.preloader-active,
+  body.preloader-active * {
+    cursor: none !important;
+  }
+
+  .nav {
+    position: fixed !important;
+    left: 0; top: 0;
+    width: 100%;
+  }
+
+  body.preloader-active .nav__label {
+    position: fixed !important;
+    left: 0; top: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 10000 !important;
+
+    background: #1e1e1e;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    transition: height 0.8s cubic-bezier(.4,0,.2,1) !important;
+    will-change: height;
+  }
+
+  body.preloader-shrink .nav__label {
+    height: 2.2rem !important;
+  }
+
+  body.preloader-active .w-nav-menu,
+  body.preloader-active .nav__items,
+  body.preloader-active .nav__menu,
+  body.preloader-active .nav__links {
+    position: fixed !important;
+    left: 0; right: 0;
+    top: 2.2rem !important;
+
+    z-index: 9000 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body.preloader-active .nav__item,
+  body.preloader-active .w-nav-menu a {
+    opacity: 0 !important;
+    transform: translateY(-42px);
+    will-change: transform, opacity;
+    pointer-events: none !important;
+  }
+
+  body.preloader-done .nav__item,
+  body.preloader-done .w-nav-menu a {
+    opacity: 1 !important;
+    transform: translateY(0);
+    pointer-events: auto !important;
+    transition:
+      opacity 0.7s cubic-bezier(.25,.8,.25,1),
+      transform 0.7s cubic-bezier(.25,.8,.25,1);
+  }
+
+  body.preloader-finish .w-nav-menu,
+  body.preloader-finish .nav__items,
+  body.preloader-finish .nav__menu,
+  body.preloader-finish .nav__links {
+    overflow: visible !important;
+    pointer-events: auto !important;
+  }
+
+  body.preloader-active .nav__label [data-pl-text] {
+    display: inline-block;
+    white-space: pre-wrap;
+  }
+
+  body.preloader-active .nav__label .pl-char {
+    display: inline-block;
+    vertical-align: bottom;
+    opacity: 0;
+    transform: translateY(-0.15em);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  body.preloader-active .nav__label .pl-char__in {
+    display: inline-block;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.35s cubic-bezier(.2,.8,.2,1);
+    will-change: clip-path;
+  }
+
+  body.preloader-text .nav__label .pl-char {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  body.preloader-text .nav__label .pl-char__in {
+    clip-path: inset(0 0 0% 0);
+  }
+</style>
+
+<script>
+(function () {
+  if (window.__navPreloaderV9) return;
+  window.__navPreloaderV9 = true;
+
+  var SHRINK_DELAY = 1000;
+  var SHRINK_DUR   = 800;
+  var ITEM_STAGGER = 120;
+
+  var TEXT_STAGGER = 35;
+  var TEXT_START_DELAY = 120;
+
+  function pickLabelTextNode(label) {
+    var el = label.querySelector('[data-pl-text]');
+    if (el) return el;
+
+    var candidates = Array.prototype.slice.call(label.querySelectorAll('*'));
+    candidates = candidates.filter(function (x) {
+      var t = (x.textContent || '').trim();
+      return t && !x.querySelector('a, button, input, textarea, select, svg, img, video');
+    });
+
+    var best = null;
+    var bestLen = 0;
+
+    candidates.forEach(function (x) {
+      var len = (x.textContent || '').trim().length;
+      if (len > bestLen) { bestLen = len; best = x; }
+    });
+
+    if (!best) return null;
+    best.setAttribute('data-pl-text', '1');
+    return best;
+  }
+
+  function wrapTextByChars(el) {
+    if (!el) return 0;
+
+    if (el.getAttribute('data-pl-wrapped') === '1') {
+      var existing = el.querySelectorAll('.pl-char');
+      return existing ? existing.length : 0;
+    }
+
+    var text = el.textContent || '';
+    el.setAttribute('data-pl-wrapped', '1');
+    el.textContent = '';
+
+    var frag = document.createDocumentFragment();
+    var count = 0;
+
+    Array.prototype.forEach.call(text, function (ch) {
+      if (ch === '\n') {
+        frag.appendChild(document.createElement('br'));
+        return;
+      }
+
+      if (ch === ' ') {
+        frag.appendChild(document.createTextNode('\u00A0'));
+        return;
+      }
+
+      var outer = document.createElement('span');
+      outer.className = 'pl-char';
+
+      var inner = document.createElement('span');
+      inner.className = 'pl-char__in';
+      inner.textContent = ch;
+
+      outer.appendChild(inner);
+      frag.appendChild(outer);
+      count++;
+    });
+
+    el.appendChild(frag);
+    return count;
+  }
+
+  function applyCharDelays(el) {
+    var chars = el ? el.querySelectorAll('.pl-char') : null;
+    if (!chars || !chars.length) return 0;
+
+    chars.forEach(function (c, i) {
+      c.style.transitionDelay = (i * TEXT_STAGGER) + 'ms';
+      var inner = c.querySelector('.pl-char__in');
+      if (inner) inner.style.transitionDelay = (i * TEXT_STAGGER) + 'ms';
+    });
+
+    return chars.length;
+  }
+
+  function start() {
+    var body = document.body;
+    var label = document.querySelector('.nav__label');
+    if (!body || !label) return;
+
+    body.classList.add('preloader-active');
+
+    var textEl = pickLabelTextNode(label);
+    wrapTextByChars(textEl);
+    applyCharDelays(textEl);
+
+    setTimeout(function () {
+      body.classList.add('preloader-text');
+    }, TEXT_START_DELAY);
+
+    setTimeout(function () {
+      body.classList.add('preloader-shrink');
+    }, SHRINK_DELAY);
+
+    setTimeout(function () {
+      var items = document.querySelectorAll('.nav__item, .w-nav-menu a');
+
+      body.classList.add('preloader-done');
+
+      items.forEach(function (el, i) {
+        el.style.transitionDelay = (i * ITEM_STAGGER) + 'ms';
+      });
+
+      var total = (items.length ? (items.length - 1) * ITEM_STAGGER : 0) + 800;
+
+      setTimeout(function () {
+        body.classList.add('preloader-finish');
+        body.classList.remove('preloader-active'); // курсор вернётся тут же
+      }, total);
+
+    }, SHRINK_DELAY + SHRINK_DUR);
+  }
+
+  (function wait() {
+    if (document.querySelector('.nav__label')) start();
+    else requestAnimationFrame(wait);
+  })();
+})();
+</script></head><body class="work"><div class="nav"><a href="/" class="nav__label w-inline-block"><div class="t-capt1 nav__logo">Aritra Majumdar</div></a><div class="w-layout-grid nav__items"><a href="/about" class="nav__item about w-inline-block"><div class="t-h3 nav__item-link">about</div></a><a href="/work" aria-current="page" class="nav__item work w-inline-block w--current"><div class="t-h3 nav__item-link">work</div></a></div></div><div id="modal-lectured-architecture" class="popup__wrapper popup-lectured-architecture"><div class="popup__layout"><div class="t-h2"><strong>Technical Expertise</strong></div><div class="divider popup"></div><div class="popup__title-wrp"><div id="Giproteatr-at-Work" class="t-h3 popup__title long-title">Platform: AI Trading Suite</div><div class="t-h3 popup-close">x</div></div><div class="divider popup"></div><div class="popup__content"><div class="popup__content up"><div class="t-text2 popup">The AI Trading Suite is a comprehensive algorithmic trading system designed for high-frequency trading (HFT) and quantitative research. It leverages statistical methods and machine learning models to analyze market microstructure and order book dynamics. The system features a robust data pipeline capable of preprocessing and validating decades of historical L1 tick data, facilitating extensive backtesting across tens of thousands of market scenarios to optimize strategy parameters and maximize risk-adjusted returns.</div><div class="popup__options"><a href="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/69657a3ae6c913f74a14d545_architecture%20as%20collaboration.pdf" target="_blank" class="button pdf popup w-inline-block"><div>download pdf</div><img src="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/69663782b3c93b98bdf8924f_pdf.svg" loading="lazy" alt="" class="btn__icon"></a><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Year</div><div class="t-capt2 popup__options-right">2021 — 2022</div></div><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Author</div><div class="t-capt2 popup__options-right">Aritra Majumdar</div></div><div class="divider popup"></div></div></div><div class="footer-pc popup"><div class="footer__right"><a href="/work" target="_blank" class="t-capt1 footer-link"><span>Work</span></a><a href="#" target="_blank" class="t-capt1 footer-link">Aritra Majumdar © 2026</a></div></div><div class="footer-adaptive"><div class="footer__left"><div class="t-capt1">github</div><div class="t-capt1">linkedin</div><div class="t-capt1">aritramajumdar2005@gmail.com</div></div><div class="footer__divider popup"></div><div class="footer__right"><div class="t-capt1">Documents</div><div class="t-capt1">Aritra Majumdar © 2026</div></div></div></div></div></div><div id="modal-lectured-moving" class="popup__wrapper popup-lectured-moving"><div class="popup__layout"><div class="t-h2"><strong>Teaching</strong></div><div class="divider popup"></div><div class="popup__title-wrp"><div id="Giproteatr-at-Work" class="t-h3 popup__title">Platform: Nexus-DS</div><div class="t-h3 popup-close">x</div></div><div class="divider popup"></div><div class="popup__content"><div class="popup__content up"><div class="t-text2 popup">Nexus-DS represents a paradigm shift in autonomous data science. By integrating a Golang control layer with a LangGraph reasoning layer, it orchestrates specialized AI agents to handle discovery, classification, and complex causal modeling. The system employs human-in-the-loop checkpoints and a rigorous refutation audit protocol to ensure scientific validity and reliability in its automated workflows.</div><div class="popup__options"><a href="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/69657a2a5193a9df4d07cadf_moving%20architectures.pdf" target="_blank" class="button pdf popup w-inline-block"><div>download pdf</div><img src="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/69663782b3c93b98bdf8924f_pdf.svg" loading="lazy" alt="" class="btn__icon"></a><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Year</div><div class="t-capt2 popup__options-right">2025 — 2026</div></div><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Author</div><div class="t-capt2 popup__options-right">Aritra Majumdar</div></div><div class="divider popup"></div></div></div><div class="t-text2 popup-full">The platform architecture is built for scale and security. It utilizes Docker and gVisor for sandboxed execution of AI-generated code, preventing unauthorized system access while allowing complex data manipulations. The reasoning layer leverages stateful graphs via LangGraph and Redis to manage memory across the swarm of agents. For scientific computation, it integrates high-performance libraries like Polars, DoWhy, and EconML, making it capable of executing end-to-end causal inference pipelines autonomously.</div><div class="footer-pc popup"><div class="footer__right"><a href="/work" target="_blank" class="t-capt1 footer-link"><span>Documents</span></a><a href="#" target="_blank" class="t-capt1 footer-link">Aritra Majumdar © 2026</a></div></div><div class="footer-adaptive"><div class="footer__left"><div class="t-capt1">github</div><div class="t-capt1">linkedin</div><div class="t-capt1">aritramajumdar2005@gmail.com</div></div><div class="footer__divider popup"></div><div class="footer__right"><div class="t-capt1">Documents</div><div class="t-capt1">Aritra Majumdar © 2026</div></div></div></div></div></div><div id="modal-extractivism" class="popup__wrapper popup-extractivism"><div class="popup__layout"><div class="t-h2"><strong>Project</strong></div><div class="divider popup"></div><div class="popup__title-wrp"><div class="t-h3 popup__title extractivism">Project Nexus-DS v2.0 (Full Operational Blueprint)</div><div class="t-h3 popup-close">x</div></div><div class="divider popup"></div><div class="popup__content"><div class="popup__content up"><div class="t-text2 popup">Nexus-DS is an autonomous, multi-agent system designed to handle the entire data science lifecycle, from initial data discovery to complex causal modeling and automated reporting. Unlike standard AI agents that simply write code, Nexus-DS operates as a self-correcting scientific engine that validates its own findings through rigorous statistical stress tests. The system is built on a modular, stateful architecture with a Golang control layer, LangGraph reasoning layer, causal inference engine, and Docker sandbox execution layer.</div><div class="popup__options"><a href="https://project-nexus-blond.vercel.app/" target="_blank" class="button pdf popup w-inline-block" style="margin-bottom: 10px; background-color: #333; color: white;"><div>Live Demo</div></a><a href="https://github.com/AritrMajumda/project-nexus" class="button pdf popup w-inline-block"><div>GitHub Repo</div></a><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Year</div><div class="t-capt2 popup__options-right">2026 — Present</div></div><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Type</div><div class="t-capt2 popup__options-right">Personal Project</div></div><div class="divider popup"></div></div></div><div class="t-text2 popup-full">The system follows a cyclical workflow: Discovery &amp; Classification (task ingress, memory recall, tiered routing), Scientific Modeling (causal DAG proposals, human checkpoints, autonomous coding), and the Refutation Audit (placebo tests, subset validation). The final output includes interactive visuals, XAI narrative summaries, and audit confidence scores. Built with Golang infrastructure, LangGraph orchestration with Redis, Docker+gVisor sandboxing, and React+Vite frontend with React-Flow for visual graph editing.<br><br>The project uses Polars, DoWhy, EconML, and SQLAlchemy for scientific computation, with a Vector DB for long-term institutional memory.</div><div class="footer-pc popup"><div class="footer__right"><a href="/work" target="_blank" class="t-capt1 footer-link"><span>Documents</span></a><a href="#" target="_blank" class="t-capt1 footer-link">Aritra Majumdar © 2026</a></div></div><div class="footer-adaptive"><div class="footer__left"><div class="t-capt1">github</div><div class="t-capt1">linkedin</div><div class="t-capt1">aritramajumdar2005@gmail.com</div></div><div class="footer__divider popup"></div><div class="footer__right"><div class="t-capt1">Documents</div><div class="t-capt1">Aritra Majumdar © 2026</div></div></div></div></div></div><div id="modal-giproteatr" class="popup__wrapper popup-giproteatr"><div class="popup__layout"><div class="t-h2"><strong>Research</strong></div><div class="divider popup"></div><div class="popup__title-wrp"><div id="Giproteatr-at-Work" class="t-h3 popup__title">Regime-Adaptive HFT (Independent Research)</div><div class="t-h3 popup-close">x</div></div><div class="divider popup"></div><div class="popup__content"><div class="popup__content up"><div class="t-text2 popup">This independent research project investigates dynamic risk-aversion tuning within the Avellaneda-Stoikov market-making framework for high-frequency trading in non-stationary markets. The research focuses on engineering robust data pipelines for processing over 100 aggregate years of L1 tick data across 10 instruments, analyzing top-of-book microstructure signals to mitigate adverse selection, and benchmarking adaptive parameterization using 2024 Bitcoin high-frequency data.</div><div class="popup__options"><a href="#" class="button pdf popup w-inline-block"><div>download pdf</div><img src="https://cdn.prod.website-files.com/6932a842d7dfba9f9b27d9d6/69663782b3c93b98bdf8924f_pdf.svg" loading="lazy" alt="" class="btn__icon"></a><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Year</div><div class="t-capt2 popup__options-right">2025 — Present</div></div><div class="divider popup"></div></div></div><div class="t-text2 popup-full">The methodology combines computational finance techniques with machine learning approaches for regime detection and parameter optimization. Key innovations include dynamic gamma tuning for risk-aversion adaptation, statistical methods for data modeling and visualization, and AI framework integration for signal processing and decision-making in rapidly changing market conditions. </div><div class="footer-pc popup"><div class="footer__right"><a href="/work" target="_blank" class="t-capt1 footer-link"><span>Documents</span></a><a href="#" target="_blank" class="t-capt1 footer-link">Aritra Majumdar © 2026</a></div></div><div class="footer-adaptive"><div class="footer__left"><div class="t-capt1">github</div><div class="t-capt1">linkedin</div><div class="t-capt1">aritramajumdar2005@gmail.com</div></div><div class="footer__divider popup"></div><div class="footer__right"><div class="t-capt1">Documents</div><div class="t-capt1">Aritra Majumdar © 2026</div></div></div></div></div></div><div class="page-nav"><h1 class="t-h1">Work</h1><div class="page-nav__anchor-wrp">
+      <a href="#research" class="t-h3 page-nav__anchor"><strong>Research</strong></a>
+      <a href="#projects" class="t-h3 page-nav__anchor"><strong>Projects</strong></a>
+    </div><div class="footer__left-wrp div-block-2"><div class="footer__left"><a href="https://github.com/AritrMajumda" target="_blank" class="t-capt1 custom-link">github</a><a href="https://www.linkedin.com/in/aritra-majumdar-8930832bb/" target="_blank" class="t-capt1 custom-link">linkedin</a><a href="mailto:aritramajumdar2005@gmail.com" class="t-capt1 custom-link">aritramajumdar2005@gmail.com</a></div></div></div><div class="page-grid work-grid"><div id="top" class="anchor__top"></div><div class="page__layout work"><div id="cv" class="anchor"></div><div class="research"><h2 class="t-h2">Research</h2><div class="divider"></div><div class="bc__list-wrp w-dyn-list"><div role="list" class="bc__list w-dyn-items"><div role="listitem" class="bc__item w-dyn-item"><a href="#modal-giproteatr" class="card-wrp w-inline-block"><img src="https://cdn.prod.website-files.com/694aa556f1fcadb6723686c8/695e3823f61167180126d1ca_Rectangle%2022.png" loading="lazy" width="Auto" alt="" class="bc__img"><div class="bc__content"><div class="bc__card-up"><div id="2018" class="t-text1">2025 — Present</div><div class="t-text-btn read-btn bc-btn">Read →</div></div><div id="Regime-Adaptive HFT (Independent Research)" class="t-h3 bc__title">Regime-Adaptive HFT (Independent Research)</div><div id="Stochastic Control in Non-Stationary Markets using Avellaneda-Stoikov Framework" class="t-desc bc__desc">Stochastic Control in Non-Stationary Markets using Avellaneda-Stoikov Framework</div></div></a><div class="divider"></div></div></div></div></div><div class="work-group"><div id="projects" class="anchor"></div><h2 class="t-h2"><strong>Projects</strong></h2>
+      <div class="main-card">
+        <div class="curr-cms w-dyn-list">
+          <div role="list" class="curr-cms__wrp w-dyn-items">
+            
+        <div role="listitem" class="curr__cms-content w-dyn-item">
+          <div class="divider"></div>
+          <a href="#modal-extractivism" class="card-wrp w-inline-block">
+            <div class="t-text1 _50year">2026</div>
+            <div class="t-desc fullname"><strong>Project Nexus-DS v2.0</strong> — Autonomous, multi-agent system handling entire data science lifecycle with causal modeling and statistical stress tests.</div>
+            <div class="t-text-btn read-btn work-btn">Read →</div>
+          </a>
+        </div>
+      
+        <div role="listitem" class="curr__cms-content w-dyn-item">
+          <div class="divider"></div>
+          <a href="#" class="card-wrp w-inline-block">
+            <div class="t-text1 _50year">2025</div>
+            <div class="t-desc fullname"><strong>AI Trading Indicator</strong> — Developed for top 10 most volatile instruments using statistical methods with 20 years of historical data and 10,000 backtested scenarios.</div>
+            <div class="t-text-btn read-btn work-btn">Read →</div>
+          </a>
+        </div>
+      
+        <div role="listitem" class="curr__cms-content w-dyn-item">
+          <div class="divider"></div>
+          <a href="#modal-profesor" class="card-wrp w-inline-block modal-trigger">
+            <div class="t-text1 _50year">2026</div>
+            <div class="t-desc fullname"><strong>Viva Voce AI Agent (Profesor AI)</strong> — RAG-based preparation helper using prompt chaining, PDF question generation, and Voice-to-Text with thematic modes.</div>
+            <div class="t-text-btn read-btn work-btn">Read →</div>
+          </a>
+        </div>
+      
+        <div role="listitem" class="curr__cms-content w-dyn-item">
+          <div class="divider"></div>
+          <a href="#" class="card-wrp w-inline-block">
+            <div class="t-text1 _50year">2025</div>
+            <div class="t-desc fullname"><strong>AI Portfolio Manager</strong> — AI-driven portfolio management using live news, fundamentals, and quarterly results for dynamic weightage optimization.</div>
+            <div class="t-text-btn read-btn work-btn">Read →</div>
+          </a>
+        </div>
+      
+        
+      
+        <div role="listitem" class="curr__cms-content w-dyn-item">
+          <div class="divider"></div>
+          <a href="#modal-govt-hospital" class="card-wrp w-inline-block modal-trigger">
+            <div class="t-text1 _50year">2025</div>
+            <div class="t-desc fullname"><strong>Govt Hospital Referral System</strong> — Healthcare platform engineered to optimize the patient referral system across government hospitals.</div>
+            <div class="t-text-btn read-btn work-btn">Read →</div>
+          </a>
+        </div>
+      
+        
+      
+          </div>
+        </div>
+        <div class="divider"></div>
+      </div>
+    </div></div><div class="footer-adaptive"><div class="footer__left"><a href="https://github.com/AritrMajumda" target="_blank" class="t-capt1 custom-link">github</a><a href="https://www.linkedin.com/in/aritra-majumdar-8930832bb/" target="_blank" class="t-capt1 custom-link">linkedin</a><a href="mailto:aritramajumdar2005@gmail.com" class="t-capt1 custom-link">aritramajumdar2005@gmail.com</a></div><div class="footer__divider"></div><div class="footer__right"><a href="/work" class="t-capt1 custom-link footer-link-right">Documents</a><a href="#" target="_blank" class="t-capt1 custom-link footer-link-right">Aritra Majumdar © 2026</a></div></div><div class="footer-pc"><div class="footer__right"><a href="/work" class="t-capt1 custom-link footer-link-right">Documents</a><a href="#" target="_blank" class="t-capt1 custom-link footer-link-right">Aritra Majumdar © 2026</a></div></div></div><script src="/js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript"></script><script src="/js/webflow.schunk.08779b17d1882f59.js" type="text/javascript"></script><script src="/js/webflow.751e0867.6551f58fa950fc60.js" type="text/javascript"></script><style>
+  @media (hover:hover) and (pointer:fine) {
+    html, body, html * {
+      cursor: none !important;
+    }
+
+    a, button, .w-button, [role="button"],
+    input, textarea, select, label, summary {
+      cursor: none !important;
+    }
+
+    /* Важно: задаём фон (подставь свой, если не белый) */
+    html, body {
+      background-color: #fff;
+    }
+
+    .cursor-layer{
+      position: fixed;
+      inset: 0;
+      z-index: 999999999999999 !important;
+      pointer-events: none;
+
+      /* DIFFERENCE переносим на общий слой */
+      mix-blend-mode: difference;
+    }
+
+    .cursor-layer .cursor-dot,
+    .cursor-layer .cursor-dot-outline {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.12s ease-in-out, transform 0.12s ease-in-out;
+      will-change: transform, top, left, opacity;
+    }
+
+    .cursor-layer .cursor-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .cursor-layer .cursor-dot-outline {
+      width: 0px;
+      height: 0px;
+      border-radius: 0%;
+      background: rgba(169, 169, 222, 0);
+    }
+  }
+</style>
+
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn);
+    else fn();
+  }
+
+  ready(function () {
+    if (!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+    if (document.querySelector(".cursor-layer")) return;
+
+    var layer = document.createElement("div");
+    layer.className = "cursor-layer";
+
+    var dot = document.createElement("div");
+    dot.className = "cursor-dot";
+
+    var outline = document.createElement("div");
+    outline.className = "cursor-dot-outline";
+
+    layer.appendChild(outline);
+    layer.appendChild(dot);
+    document.documentElement.appendChild(layer);
+
+    var cursor = {
+      delay: 8,
+      _x: window.innerWidth / 2,
+      _y: window.innerHeight / 2,
+      endX: window.innerWidth / 2,
+      endY: window.innerHeight / 2,
+      cursorVisible: true,
+      cursorEnlarged: false,
+      $dot: dot,
+      $outline: outline
+    };
+
+    function applyNativeCursorNone() {
+      document.documentElement.style.cursor = "none";
+      document.body.style.cursor = "none";
+    }
+
+    function toggleCursorVisibility() {
+      var o = cursor.cursorVisible ? 1 : 0;
+      cursor.$dot.style.opacity = o;
+      cursor.$outline.style.opacity = o;
+    }
+
+    function toggleCursorSize() {
+      if (cursor.cursorEnlarged) {
+        cursor.$dot.style.transform = "translate(-50%, -50%) scale(2)";
+        cursor.$outline.style.transform = "translate(-50%, -50%) scale(0)";
+      } else {
+        cursor.$dot.style.transform = "translate(-50%, -50%) scale(1)";
+        cursor.$outline.style.transform = "translate(-50%, -50%) scale(1)";
+      }
+    }
+
+    function animate() {
+      cursor._x += (cursor.endX - cursor._x) / cursor.delay;
+      cursor._y += (cursor.endY - cursor._y) / cursor.delay;
+
+      cursor.$outline.style.left = cursor._x + "px";
+      cursor.$outline.style.top = cursor._y + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    function setDotPosition(x, y) {
+      cursor.endX = x;
+      cursor.endY = y;
+      cursor.$dot.style.left = x + "px";
+      cursor.$dot.style.top = y + "px";
+    }
+
+    function isInteractive(el) {
+      if (!el || el === document.documentElement) return false;
+      return !!el.closest('a, button, .w-button, [role="button"], input, textarea, select, label, summary');
+    }
+
+    document.addEventListener("mousemove", function (e) {
+      applyNativeCursorNone();
+      cursor.cursorVisible = true;
+      toggleCursorVisibility();
+      setDotPosition(e.clientX, e.clientY);
+    }, { passive: true });
+
+    document.addEventListener("mouseenter", function () {
+      applyNativeCursorNone();
+      cursor.cursorVisible = true;
+      toggleCursorVisibility();
+    });
+
+    document.addEventListener("mouseleave", function () {
+      cursor.cursorVisible = false;
+      toggleCursorVisibility();
+    });
+
+    document.addEventListener("mousedown", function () {
+      cursor.cursorEnlarged = true;
+      toggleCursorSize();
+    });
+
+    document.addEventListener("mouseup", function () {
+      cursor.cursorEnlarged = false;
+      toggleCursorSize();
+    });
+
+    document.addEventListener("mouseover", function (e) {
+      if (isInteractive(e.target)) {
+        cursor.cursorEnlarged = true;
+        toggleCursorSize();
+      }
+    });
+
+    document.addEventListener("mouseout", function (e) {
+      if (isInteractive(e.target)) {
+        cursor.cursorEnlarged = false;
+        toggleCursorSize();
+      }
+    });
+
+    window.addEventListener("blur", function () {
+      cursor.cursorVisible = false;
+      toggleCursorVisibility();
+    });
+
+    window.addEventListener("focus", function () {
+      applyNativeCursorNone();
+      cursor.cursorVisible = true;
+      toggleCursorVisibility();
+      setDotPosition(cursor.endX, cursor.endY);
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        cursor.cursorVisible = false;
+        toggleCursorVisibility();
+      } else {
+        applyNativeCursorNone();
+        cursor.cursorVisible = true;
+        toggleCursorVisibility();
+      }
+    });
+
+    applyNativeCursorNone();
+    cursor.$dot.style.opacity = 1;
+    cursor.$outline.style.opacity = 1;
+    toggleCursorSize();
+    animate();
+  });
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* ========== POPUPS ========== */
+  .popup__wrapper {
+    display: none !important;
+    cursor: pointer;
+  }
+  .popup__wrapper.is-open {
+    display: flex !important;
+  }
+  .popup__layout {
+    cursor: default;
+  }
+  body.no-scroll {
+    overflow: hidden;
+  }
+  
+  .news__img {
+    filter: grayscale(100%);
+    transition: filter .35s ease;
+  }
+
+  .news__item:hover .news__img {
+    filter: grayscale(0%);
+  }
+
+  /* ========== PAGE NAV ACTIVE ========== */
+  .page-nav__anchor-wrp a {
+    opacity: 1;
+    transition: opacity .2s ease;
+  }
+  .page-nav__anchor-wrp a.is-active-anchor {
+    color: #868686;
+  }
+
+  /* ========== CARD HOVER (DESKTOP) ========== */
+  @media (min-width: 1200px){
+    .card-wrp[href="#"]{
+      cursor: default;
+    }
+
+    .card-wrp {
+      position: relative;
+    }
+
+    .card-wrp::before{
+      content:'';
+      position:absolute;
+      top:-0.63rem;
+      left:-1.25rem;
+      width:calc(100% + 2.5rem);
+      height:calc(100% + 1.26rem);
+      opacity:0;
+      transition:opacity .2s ease-out;
+      z-index:0;
+      pointer-events:none;
+    }
+    
+    .work .card-wrp::before {
+      background:#6E1E3B; 
+    }
+    
+    .about .card-wrp::before {
+      background:#4A2532; 
+    }
+
+    .card-wrp:hover::before{
+      opacity:1;
+    }
+
+    .card-wrp > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .card-wrp:hover *{
+      color:#fff;
+    }
+  }
+
+  /* ========== CUSTOM LINK UNDERLINE ========== */
+  .custom-link::after,
+  .footer-link::after,
+  .footer-news::after {
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-0.125rem;
+    height:0.0625rem;
+    background:currentColor;
+    transform:scaleX(0);
+    transform-origin:right;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1)
+  }
+  .custom-link:hover::after,
+  .custom-link:focus-visible::after,
+  .footer-link:hover::after,
+  .footer-link:focus-visible::after,
+  .footer-news:hover::after,
+  .footer-news:focus-visible::after {
+    transform:scaleX(1);
+    transform-origin:left
+  }
+
+  /* ========== PDF BUTTON ICON (DESKTOP) ========== */
+  @media (min-width: 1200px){
+    .button.pdf{
+      display:inline-flex;
+      align-items:center;
+    }
+
+    .button.pdf .btn__icon{
+      opacity:0;
+      width:0;
+      max-width:0;
+      margin-left:0;
+      overflow:hidden;
+      transform:translateX(-0.375rem);
+      pointer-events:none;
+      flex:0 0 auto;
+      transition:
+        width .25s ease,
+        max-width .25s ease,
+        margin-left .25s ease,
+        opacity .2s ease,
+        transform .25s ease;
+    }
+
+    .button.pdf:hover .btn__icon,
+    .button.pdf:focus-visible .btn__icon{
+      opacity:1;
+      width:0.8125rem;
+      max-width:0.8125rem;
+      margin-left:0.625rem;
+      transform:translateX(0);
+    }
+
+    .button.pdf .btn__icon img,
+    .button.pdf .btn__icon svg{
+      display:block;
+      width:0.8125rem;
+    }
+  }
+
+  @media (max-width: 1199px){
+    .button.pdf .btn__icon{
+      display:none !important;
+    }
+  }
+  
+  
+  
+
+  /* ========== RESPONSIVE ROOT FONT (VW) ========== */
+  :root {
+    --font-from: 32;
+    --font-to: 32;
+    --vw-from: calc(2400 / 100);
+    --vw-to: calc(3600 / 100);
+    --coefficient: calc((var(--font-to) - var(--font-from)) / (var(--vw-to) - var(--vw-from)));
+    --base: calc((var(--font-from) - var(--vw-from) * var(--coefficient)) / 16);
+  }
+
+  html {
+    font-size: calc(var(--base) * 1rem + var(--coefficient) * 1vw);
+  }
+
+  @media screen and (max-width: 2400px) {
+    :root {
+      --font-from: 16;
+      --font-to: 32;
+      --vw-from: calc(1200 / 100);
+      --vw-to: calc(2400 / 100);
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    :root {
+      --font-from: 16;
+      --font-to: 25.033;
+      --vw-from: calc(767 / 100);
+      --vw-to: calc(1200 / 100);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    :root {
+      --font-from: 16;
+      --font-to: 31.47;
+      --vw-from: calc(390 / 100);
+      --vw-to: calc(767 / 100);
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    :root {
+      --font-from: 0;
+      --font-to: 16;
+      --vw-from: calc(1 / 100);
+      --vw-to: calc(390 / 100);
+    }
+  }
+
+  /* ========== ANCHOR OFFSET ========== */
+  html {
+    scroll-padding-top: 80px;
+  }
+  [id] {
+    scroll-margin-top: 80px;
+  }
+
+  /* ========== HIDE SCROLLBARS (KEEP SCROLL) ========== */
+  body::-webkit-scrollbar,
+  .popup__wrapper::-webkit-scrollbar {
+    width: 0px !important;
+  }
+  body::-webkit-scrollbar-thumb,
+  .popup__wrapper::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+
+  /* ========== CURRENT NAV ITEM ========== */
+  .nav__item.w--current .nav__item-link {
+    opacity: 0.5 !important;
+  }
+</style>
+
+
+
+<style>
+  .footer__divider{
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform .9s cubic-bezier(.25,.8,.25,1);
+    will-change: transform;
+  }
+  .footer__divider.is-in{
+    transform: scaleX(1);
+  }
+</style>
+
+<script>
+  (function(){
+    if (window.__globalFooterTimerV2) return;
+    window.__globalFooterTimerV2 = true;
+
+    var START_DELAY = 3500; // ⏱ запуск через 3.5s после загрузки
+
+    function isBelow1200(){
+      return window.matchMedia &&
+        window.matchMedia('(max-width: 1200px)').matches;
+    }
+
+    function reveal(){
+      if (!isBelow1200()) return;
+
+      document.querySelectorAll('.footer__divider').forEach(function(div){
+        if (div.closest('.footer-pc')) return;
+        div.classList.add('is-in');
+      });
+    }
+
+    function init(){
+      setTimeout(reveal, START_DELAY);
+    }
+
+    if (document.readyState === 'loading'){
+      window.addEventListener('load', init);
+    } else {
+      init();
+    }
+
+    window.addEventListener('pageshow', function(e){
+      if (e.persisted) init();
+    });
+  })();
+</script>
+
+<meta name="twitter:card" content="summary_large_image"><style>
+  /* ABOUT: page-nav — выезд сверху вниз */
+  .page-nav{
+    opacity: 1;
+    transform: translateY(-100%);
+    will-change: transform;
+    transition: transform 1.25s cubic-bezier(.25,.8,.25,1);
+    overflow: hidden;
+  }
+  .page-nav.is-in{
+    transform: translateY(0);
+  }
+
+  /* Элементы внутри — вначале скрыты, но начнут проявляться СРАЗУ при выезде панели */
+  .page-nav .t-h1,
+  .page-nav .page-nav__anchor-wrp,
+  .page-nav .footer__left-wrp{
+    opacity: 0;
+    transform: translateY(10px);
+    will-change: transform, opacity;
+    transition:
+      opacity .55s cubic-bezier(.22,.61,.36,1),
+      transform .55s cubic-bezier(.22,.61,.36,1);
+  }
+
+  /* теперь все три показываются одновременно */
+  .page-nav.is-in .t-h1,
+  .page-nav.is-in .page-nav__anchor-wrp,
+  .page-nav.is-in .footer__left-wrp{
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+(function () {
+  if (window.__aboutPageNavInstantV1) return;
+  window.__aboutPageNavInstantV1 = true;
+
+  var PANEL_DELAY = 2800;
+
+  function isActuallyVisible(el){
+    if (!el) return false;
+    var cs = getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+    var r = el.getBoundingClientRect();
+    return (r.width > 0 && r.height > 0);
+  }
+
+  function forceInitial(nav){
+    nav.classList.remove('is-in');
+    nav.style.setProperty('opacity', '1', 'important');
+    nav.style.setProperty('transform', 'translateY(-100%)', 'important');
+  }
+
+  function start(nav){
+    if (!nav) return;
+
+    if (!isActuallyVisible(nav)) {
+      requestAnimationFrame(function(){ start(nav); });
+      return;
+    }
+
+    forceInitial(nav);
+
+    setTimeout(function(){
+      void nav.offsetHeight;
+
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          nav.style.removeProperty('opacity');
+          nav.style.removeProperty('transform');
+          nav.classList.add('is-in'); /* панель и ��лементы стартуют вместе */
+        });
+      });
+    }, PANEL_DELAY);
+  }
+
+  function init(){
+    var nav = document.querySelector('.page-nav');
+    if (!nav) return;
+    start(nav);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) init();
+  });
+})();
+</script>
+
+
+
+
+
+
+
+<style>
+/* =========================================
+   WORK — SCOPE FLAGS
+   JS adds:
+   - .is-anim-1 to FIRST .research only
+   - .is-work-anim to .page__layout.work
+========================================= */
+
+/* =========================
+   FIRST RESEARCH (sequence)
+========================= */
+.research.is-anim-1 .t-h2{
+  opacity: 0;
+  transform: translateY(10px);
+  will-change: opacity, transform;
+  transition:
+    opacity .30s cubic-bezier(.25,.8,.25,1),
+    transform .30s cubic-bezier(.25,.8,.25,1);
+}
+.research.is-anim-1 .t-h2.is-in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.research.is-anim-1 .divider{
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+  transition: transform .45s cubic-bezier(.25,.8,.25,1);
+}
+.research.is-anim-1 .divider.is-in{
+  transform: scaleX(1);
+}
+
+/* CARDS: fade-in whole card */
+.research.is-anim-1 .card-wrp{
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity .30s cubic-bezier(.25,.8,.25,1);
+  pointer-events: none; /* hover/click OFF до появления */
+}
+.research.is-anim-1 .card-wrp.is-in{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =========================
+   WORK-GROUP (scroll like other pages)
+   only inside .work-group
+========================= */
+
+/* t-h2 fade-in in work-groups */
+.page__layout.work.is-work-anim .work-group .t-h2{
+  opacity: 0;
+  transform: translateY(10px);
+  will-change: opacity, transform;
+  transition:
+    opacity .45s cubic-bezier(.25,.8,.25,1),
+    transform .45s cubic-bezier(.25,.8,.25,1);
+}
+.page__layout.work.is-work-anim .work-group .t-h2.is-in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* divider draw */
+.page__layout.work.is-work-anim .work-group .divider{
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+  transition: transform .6s cubic-bezier(.25,.8,.25,1);
+}
+.page__layout.work.is-work-anim .work-group .divider.is-in{
+  transform: scaleX(1);
+}
+
+/* card fade-in (whole card) */
+.page__layout.work.is-work-anim .work-group .card-wrp{
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity .6s cubic-bezier(.25,.8,.25,1);
+  pointer-events: none; /* hover OFF до появления */
+}
+.page__layout.work.is-work-anim .work-group .card-wrp.is-in{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* t-h3 fade-up (если нужно) */
+.page__layout.work.is-work-anim .work-group .t-h3{
+  opacity: 0;
+  transform: translateY(10px);
+  will-change: opacity, transform;
+  transition:
+    opacity .45s cubic-bezier(.25,.8,.25,1),
+    transform .45s cubic-bezier(.25,.8,.25,1);
+}
+.page__layout.work.is-work-anim .work-group .t-h3.is-in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   FIX #3: в bc__item НЕ анимируем
+   внутренности отдельно — только whole-card fade
+========================= */
+.page__layout.work.is-work-anim .bc__item .card-wrp *{
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+</style>
+
+<script>
+(function(){
+  if (window.__workSeqAndScrollV4) return;
+  window.__workSeqAndScrollV4 = true;
+
+  if (!/\/work\/?$/i.test(window.location.pathname)) return;
+
+  var OFFSET = 100;
+  var STEP_OVERLAP = 80;   // чем меньше — тем “раздельнее”, чем больше — тем плотнее
+  var STEP_MIN_WAIT = 120; // минимальная пауза между шагами (чтобы не слипалось)
+
+  function isDesktop1200(){
+    return window.matchMedia && window.matchMedia('(min-width: 1200px)').matches;
+  }
+
+  function qsa(root, sel){
+    return Array.prototype.slice.call((root||document).querySelectorAll(sel));
+  }
+
+  function inTriggerZone(el){
+    if (!el) return false;
+    var r = el.getBoundingClientRect();
+    return r.top < (window.innerHeight - OFFSET);
+  }
+
+  function parseMaxTimeToMs(listStr){
+    if (!listStr) return 0;
+    var parts = listStr.split(',').map(function(s){ return s.trim(); });
+    var max = 0;
+    parts.forEach(function(p){
+      var v = 0;
+      if (p.indexOf('ms') > -1) v = parseFloat(p);
+      else if (p.indexOf('s') > -1) v = parseFloat(p) * 1000;
+      if (!isNaN(v)) max = Math.max(max, v);
+    });
+    return max;
+  }
+
+  function getTransitionTotalMs(el){
+    if (!el) return 0;
+    var cs = getComputedStyle(el);
+    var dur = parseMaxTimeToMs(cs.transitionDuration);
+    var del = parseMaxTimeToMs(cs.transitionDelay);
+    return (dur + del) || 0;
+  }
+
+  /* =========================
+     DESKTOP (>=1200): ждём .page-nav как раньше
+  ========================= */
+  function afterLeftNavArrived(cb){
+    var nav = document.querySelector('.page-nav');
+    if (!nav){ cb(); return; }
+
+    function schedule(){
+      var cs = getComputedStyle(nav);
+      var dur = parseMaxTimeToMs(cs.transitionDuration);
+      var del = parseMaxTimeToMs(cs.transitionDelay);
+      setTimeout(cb, dur + del + 30);
+    }
+
+    if (nav.classList.contains('is-in')){ schedule(); return; }
+
+    var mo = new MutationObserver(function(){
+      if (nav.classList.contains('is-in')){
+        mo.disconnect();
+        schedule();
+      }
+    });
+
+    mo.observe(nav,{ attributes:true, attributeFilter:['class'] });
+
+    setTimeout(function(){
+      try{ mo.disconnect(); }catch(e){}
+      schedule();
+    }, 8000);
+  }
+
+  /* =========================
+     <1200: нет nav__bar/.page-nav
+     ждём появления nav__item (и/или окончания preloader по классам)
+  ========================= */
+  function waitPreloaderDone(cb){
+    var body = document.body;
+    if (!body){ cb(); return; }
+
+    function done(){
+      return body.classList.contains('preloader-complete') ||
+             body.classList.contains('preloader-finish') ||
+             (!body.classList.contains('preloader-active') && body.classList.contains('preloader-done'));
+    }
+
+    if (done()){ cb(); return; }
+
+    var mo = new MutationObserver(function(){
+      if (done()){
+        try{ mo.disconnect(); }catch(e){}
+        cb();
+      }
+    });
+    mo.observe(body, { attributes:true, attributeFilter:['class'] });
+
+    setTimeout(function(){
+      try{ mo.disconnect(); }catch(e){}
+      cb();
+    }, 9000);
+  }
+
+  function waitNavItemsReady(cb){
+    var tries = 0;
+
+    function ready(){
+      var items = document.querySelectorAll('.nav__item');
+      if (!items.length) return false;
+
+      for (var i=0;i<items.length;i++){
+        var r = items[i].getBoundingClientRect();
+        if (r.width > 0 && r.height > 0) return true;
+      }
+      return false;
+    }
+
+    if (ready()){ cb(); return; }
+
+    var mo = new MutationObserver(function(){
+      if (ready()){
+        try{ mo.disconnect(); }catch(e){}
+        cb();
+      }
+    });
+
+    mo.observe(document.body, {
+      childList:true,
+      subtree:true,
+      attributes:true,
+      attributeFilter:['class','style']
+    });
+
+    (function raf(){
+      tries++;
+      if (ready()){
+        try{ mo.disconnect(); }catch(e){}
+        cb();
+        return;
+      }
+      if (tries > 240){
+        try{ mo.disconnect(); }catch(e){}
+        cb();
+        return;
+      }
+      requestAnimationFrame(raf);
+    })();
+  }
+
+  function afterNavReady(cb){
+    if (isDesktop1200()){
+      afterLeftNavArrived(cb);
+      return;
+    }
+    // на <1200: сначала ждём, что прелоадер закончился, затем что nav__item в DOM/видимы
+    waitPreloaderDone(function(){
+      waitNavItemsReady(cb);
+    });
+  }
+
+  /* =========================
+     1) FIRST RESEARCH SEQUENCE (STRICT STEP-BY-STEP)
+  ========================= */
+  var seqSteps = [];
+  var seqIdx = 0;
+  var seqArmed = false;
+  var seqRunning = false;
+  var firstResearch = null;
+
+  function buildFirstResearchSteps(root){
+    var steps = [];
+
+    var h2 = root.querySelector('.t-h2');
+    if (h2) steps.push(h2);
+
+    // первый divider среди прямых детей research
+    var firstDivider = null;
+    var kids = Array.prototype.slice.call(root.children || []);
+    for (var i=0; i<kids.length; i++){
+      if (kids[i].classList && kids[i].classList.contains('divider')){
+        firstDivider = kids[i];
+        break;
+      }
+    }
+    if (firstDivider) steps.push(firstDivider);
+
+    // далее внутри каждого bc__item: card -> divider
+    qsa(root, '.bc__item').forEach(function(item){
+      var card = item.querySelector('.card-wrp');
+      var div = item.querySelector('.divider');
+      if (card) steps.push(card);
+      if (div) steps.push(div);
+    });
+
+    return steps;
+  }
+
+  function resetFirstResearch(root){
+    qsa(root, '.t-h2, .divider, .card-wrp').forEach(function(el){
+      el.classList.remove('is-in');
+    });
+    qsa(root, '.card-wrp').forEach(function(card){
+      card.style.pointerEvents = 'none';
+    });
+  }
+
+  function reveal(el){
+    if (!el) return;
+    el.classList.add('is-in');
+    if (el.classList.contains('card-wrp')){
+      el.style.pointerEvents = 'auto';
+    }
+  }
+
+  function runNextStep(){
+    if (!seqArmed || seqRunning) return;
+    if (seqIdx >= seqSteps.length) return;
+
+    var el = seqSteps[seqIdx];
+    if (!el){ seqIdx++; runNextStep(); return; }
+
+    // ждём скролл/видимость
+    if (!inTriggerZone(el)) return;
+
+    // шаг
+    reveal(el);
+    seqIdx++;
+
+    // ждём transition
+    var wait = getTransitionTotalMs(el) - STEP_OVERLAP;
+    wait = Math.max(STEP_MIN_WAIT, wait || STEP_MIN_WAIT);
+
+    seqRunning = true;
+    setTimeout(function(){
+      seqRunning = false;
+      runNextStep();
+    }, wait);
+  }
+
+  function seqTick(){
+    runNextStep();
+  }
+
+  /* =========================
+     2) WORK-GROUP SCROLL FX
+  ========================= */
+  function resetWorkGroup(page){
+    qsa(page, '.work-group .t-h2, .work-group .t-h3, .work-group .divider, .work-group .card-wrp').forEach(function(el){
+      el.classList.remove('is-in');
+    });
+    qsa(page, '.work-group .card-wrp').forEach(function(card){
+      card.style.pointerEvents = 'none';
+    });
+  }
+
+  function workGroupTick(page){
+    qsa(page, '.work-group .t-h2:not(.is-in)').forEach(function(h2){
+      if (inTriggerZone(h2)) h2.classList.add('is-in');
+    });
+
+    qsa(page, '.work-group .t-h3:not(.is-in)').forEach(function(h3){
+      if (inTriggerZone(h3)) h3.classList.add('is-in');
+    });
+
+    qsa(page, '.work-group .divider:not(.is-in)').forEach(function(d){
+      if (inTriggerZone(d)) d.classList.add('is-in');
+    });
+
+    qsa(page, '.work-group .card-wrp:not(.is-in)').forEach(function(c){
+      if (inTriggerZone(c)){
+        c.classList.add('is-in');
+        c.style.pointerEvents = 'auto';
+      }
+    });
+  }
+
+  function init(){
+    var page = document.querySelector('.page__layout.work');
+    if (!page) return;
+
+    page.classList.add('is-work-anim');
+
+    var researchList = qsa(document, '.research');
+    firstResearch = researchList[0] || null;
+
+    if (firstResearch){
+      firstResearch.classList.add('is-anim-1');
+      seqSteps = buildFirstResearchSteps(firstResearch);
+      seqIdx = 0;
+      seqArmed = false;
+      seqRunning = false;
+      resetFirstResearch(firstResearch);
+    }
+
+    resetWorkGroup(page);
+
+    afterNavReady(function(){
+      // 1) first research sequence
+      if (firstResearch){
+        seqArmed = true;
+        seqTick();
+        window.addEventListener('scroll', seqTick, { passive:true });
+        window.addEventListener('resize', seqTick);
+      }
+
+      // 2) work-group scroll fx
+      workGroupTick(page);
+      window.addEventListener('scroll', function(){ workGroupTick(page); }, { passive:true });
+      window.addEventListener('resize', function(){ workGroupTick(page); });
+    });
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) init();
+  });
+})();
+</script><div id="modal-profesor" class="popup__wrapper"><div class="popup__layout"><div class="t-h2"><strong>Project</strong></div><div class="divider popup"></div><div class="popup__title-wrp"><div class="t-h3 popup__title extractivism">Profesor AI</div><div class="t-h3 popup-close">x</div></div><div class="divider popup"></div><div class="popup__content"><div class="popup__content up"><div class="t-text2 popup"><strong>AI-Powered Academic Viva Voce Examination Simulator</strong><br><br>Profesor is an intelligent examination platform that simulates rigorous academic viva voce (oral examinations) using AI.</div><div class="popup__options">
+      <a href="https://github.com/AritrMajumda/Profesor" target="_blank" class="button pdf popup w-inline-block"><div>GitHub Repo</div></a>
+      <a href="https://profesor-eight.vercel.app/" target="_blank" class="button pdf popup w-inline-block" style="margin-top: 10px; background-color: #333; color: white;"><div>Live Demo</div></a>
+    <div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Year</div><div class="t-capt2 popup__options-right">2026</div></div><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Type</div><div class="t-capt2 popup__options-right">Personal Project</div></div><div class="divider popup"></div></div></div><div class="t-text2 popup-full">AI-Powered Academic Viva Voce Examination Simulator<br><strong>Overview: Profesor is an intelligent examination platform that simulates rigorous academic viva voce (oral examinations) using AI. Upload any research paper as a PDF, and Profesor generates challenging, context-aware questions while evaluating your understanding.</strong><br><br>Architecture &amp; Tech Stack:<br><strong>Frontend: React 19 + Vite 7 (modern, fast development)</strong><br><strong>PDF Processing: pdf.js for extraction and parsing</strong><br><strong>LLM Integration: Multi-provider support (Together AI, OpenRouter, Groq, Gemini APIs)</strong><br><strong>RAG Engine: Custom chunking + semantic embeddings for context-aware Q&amp;A</strong><br><strong>Speech: Web Speech API (TTS) + Whisper API (STT) for voice interaction</strong><br><strong>Styling: Dual theme support (Academic Normal + Money Heist-inspired)</strong><br><strong>Language Composition: JavaScript (72.3%) | CSS (27.3%) | HTML (0.4%)</strong><br><br><strong>How It Works:</strong><br>Upload a research paper (PDF format)<br>System chunks and indexes the content for retrieval-augmented generation<br>Profesor generates 5 rigorous viva-style questions targeting conceptual, methodological, and critical understanding<br>Answer questions via typing or voice input<br>Receive real-time evaluation (1-10 score) with detailed feedback<br>Track performance across sessions with built-in analytics<br><br><strong>Key Features:</strong><br>RAG-powered Q&amp;A ensuring questions stay contextually relevant<br>Multi-language voice support (TTS/STT)<br>Session analytics dashboard<br>Strict evaluation mimicking real examiners<br>Multiple LLM provider flexibility<br></div><div class="footer-pc popup"><div class="footer__right"><a href="/work" target="_blank" class="t-capt1 footer-link"><span>Documents</span></a><a href="#" target="_blank" class="t-capt1 footer-link">Aritra Majumdar © 2026</a></div></div><div class="footer-adaptive"><div class="footer__left"><div class="t-capt1">github</div><div class="t-capt1">linkedin</div><div class="t-capt1">aritramajumdar2005@gmail.com</div></div><div class="footer__divider popup"></div><div class="footer__right"><div class="t-capt1">Documents</div><div class="t-capt1">Aritra Majumdar © 2026</div></div></div></div></div></div><div id="modal-govt-hospital" class="popup__wrapper"><div class="popup__layout"><div class="t-h2"><strong>Project</strong></div><div class="divider popup"></div><div class="popup__title-wrp"><div class="t-h3 popup__title extractivism">Govt Hospital Referral System</div><div class="t-h3 popup-close">x</div></div><div class="divider popup"></div><div class="popup__content"><div class="popup__content up"><div class="t-text2 popup"><strong>Healthcare Blockchain Platform</strong><br><br>A secure, decentralized blockchain solution designed for hospital bed referral systems and medical data management.</div><div class="popup__options">
+      <a href="https://github.com/AritrMajumda/Govt-Hospital-Referral-System-for-Beds" target="_blank" class="button pdf popup w-inline-block"><div>GitHub Repo</div></a>
+    <div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Year</div><div class="t-capt2 popup__options-right">2025</div></div><div class="divider popup"></div><div class="popup__options-item"><div class="t-capt2">Type</div><div class="t-capt2 popup__options-right">Personal Project</div></div><div class="divider popup"></div></div></div><div class="t-text2 popup-full">Healthcare Blockchain Platform<br><strong>Overview: A secure, decentralized blockchain solution designed for hospital bed referral systems and medical data management. Built with Byzantine Fault Tolerance consensus, it ensures data integrity and patient privacy in healthcare networks.</strong><br><br>Architecture &amp; Tech Stack:<br><strong>Blockchain Core: Custom implementation with BFT consensus mechanism</strong><br><strong>Backend: Go 1.21+ (57.7% of codebase)</strong><br><strong>Networking: libp2p for P2P communication with NAT traversal</strong><br><strong>Storage: Hybrid approach</strong><br><strong>On-chain: RocksDB for fast, reliable data persistence</strong><br><strong>Off-chain: IPFS integration for scalability</strong><br><strong>Frontend: HTML (41.9%) + Go templates for UI</strong><br><strong>API: RESTful endpoints with authentication &amp; rate limiting</strong><br><strong>Language Composition: Go (57.7%) | HTML (41.9%) | Batchfile (0.4%)</strong><br><br><strong>How It Works:</strong><br>Hospitals register as validators on the network<br>Bed availability and patient referral requests are recorded on-chain<br>Role-based access control manages permissions (patients, doctors, hospitals, researchers)<br>Smart contracts enforce data access policies with expiration dates<br>Medical records are encrypted and stored (on-chain for critical data, IPFS for bulk)<br>Real-time consensus validation ensures data integrity<br><br><strong>Core Features:</strong><br><strong>Byzantine Fault Tolerance: Secure consensus with support for multiple validators</strong><br><strong>Granular Access Control: Patient-centric data ownership with temporary access grants</strong><br><strong>Encrypted Storage: All medical records encrypted before storage</strong><br><strong>Scalable P2P Network: Efficient node discovery and communication</strong><br><strong>Comprehensive APIs: Hospital management, medical records, bed referrals, user authentication</strong><br><strong>Audit Trail: Complete access history for compliance</strong><br><br><strong>API Endpoints Include:</strong><br>Blockchain operations (blocks, transactions)<br>Medical records management (CRUD + access control)<br>User registration and role management<br>Access history tracking<br></div><div class="footer-pc popup"><div class="footer__right"><a href="/work" target="_blank" class="t-capt1 footer-link"><span>Documents</span></a><a href="#" target="_blank" class="t-capt1 footer-link">Aritra Majumdar © 2026</a></div></div><div class="footer-adaptive"><div class="footer__left"><div class="t-capt1">github</div><div class="t-capt1">linkedin</div><div class="t-capt1">aritramajumdar2005@gmail.com</div></div><div class="footer__divider popup"></div><div class="footer__right"><div class="t-capt1">Documents</div><div class="t-capt1">Aritra Majumdar © 2026</div></div></div></div></div></div></body></html>
